@@ -11,9 +11,7 @@ from democritus_algorithms import (
     genetic_algorithm_run,
 )
 from democritus_dicts import dict_values, dict_keys
-
-# from ast_data import python_ast_parse
-# from lists import list_flatten
+from democritus_python_data import python_ast_parse
 
 TEST_DATA_1 = {'a': {'b': 1}, 'c': 2, 'd': 3, 'e': {'f': 4}}
 TEST_DATA_2 = '''def test():
@@ -87,11 +85,11 @@ def test_depth_first_traverse_2():
 
 
 def test_depth_first_traverse_with_collection_function():
-    result = depth_first_traverse(
-        python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2
+    result = tuple(
+        depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
     )
 
-    assert result == ['Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Expr', 'Return', 'If', 'Return', 'Assign']
+    assert result == ('Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Expr', 'Return', 'If', 'Return', 'Assign')
 
 
 def test_breadth_first_traverse_1():
@@ -99,10 +97,10 @@ def test_breadth_first_traverse_1():
 
 
 def test_breadth_first_traverse_with_collection_function():
-    result = breadth_first_traverse(
-        python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2
+    result = tuple(
+        breadth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
     )
-    assert result == ['Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Return', 'If', 'Expr', 'Return', 'Assign']
+    assert result == ('Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Return', 'If', 'Expr', 'Return', 'Assign')
 
 
 def test_genetic_algorithm_best_mutation_function_1():
