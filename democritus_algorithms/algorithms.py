@@ -73,7 +73,7 @@ def genetic_algorithm_best_mutation_function(
     mutation_functions: List[Callable[[Any], Any]],
 ):
     """Find the best mutation function which produces values from the starting values that score the highest (as measured by the scoring_function) after generations."""
-    from stats import mean
+    import statistics
 
     results = {}
 
@@ -86,7 +86,7 @@ def genetic_algorithm_best_mutation_function(
             # todo: keep track of the score data
             values = [mutation_function(val) for val in values]
         final_scores = scores
-        average_score = mean(list(dict_values(final_scores)))
+        average_score = statistics.mean(dict_values(final_scores))
         results[mutation_function] = average_score
 
     best_mutation_function = dict_keys(dict_sort_by_values(results, reverse=True))[0]
