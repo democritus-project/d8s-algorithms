@@ -1,5 +1,6 @@
 from collections import OrderedDict
 import os
+import re
 from typing import List, Dict
 
 from democritus_algorithms import (
@@ -9,9 +10,10 @@ from democritus_algorithms import (
     genetic_algorithm_best_mutation_function,
     genetic_algorithm_run,
 )
-from dicts import dict_values, dict_keys
-from ast_data import python_ast_parse
-from lists import list_flatten
+from democritus_dicts import dict_values, dict_keys
+
+# from ast_data import python_ast_parse
+# from lists import list_flatten
 
 TEST_DATA_1 = {'a': {'b': 1}, 'c': 2, 'd': 3, 'e': {'f': 4}}
 TEST_DATA_2 = '''def test():
@@ -74,7 +76,7 @@ def test_amb_1():
 def test_depth_first_traverse_1():
     assert list(depth_first_traverse(TEST_DATA_1, _get_children_1)) == [1, 2, 3, 4]
 
-    result = list_flatten(depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2))
+    result = depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2)
     class_names = [i.__class__.__name__ for i in result]
     assert class_names == ['Expr', 'Assign', 'Expr', 'Return', 'Return', 'Assign']
 
@@ -85,10 +87,10 @@ def test_depth_first_traverse_2():
 
 
 def test_depth_first_traverse_with_collection_function():
-    result = list_flatten(
-        depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
+    result = depth_first_traverse(
+        python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2
     )
-    print(f'result: {result}')
+
     assert result == ['Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Expr', 'Return', 'If', 'Return', 'Assign']
 
 
@@ -97,24 +99,22 @@ def test_breadth_first_traverse_1():
 
 
 def test_breadth_first_traverse_with_collection_function():
-    result = list_flatten(
-        breadth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
+    result = breadth_first_traverse(
+        python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2
     )
     assert result == ['Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Return', 'If', 'Expr', 'Return', 'Assign']
 
 
 def test_genetic_algorithm_best_mutation_function_1():
-    from regexes import replace
-
     def scoring_func(item: str) -> int:
         return item.count('1')
 
     def mutation_func_1(item: str) -> str:
-        item = replace('0', '1', item, count=1)
+        item = re.sub('0', '1', item, count=1)
         return item
 
     def mutation_func_2(item: str) -> str:
-        item = replace('1', '0', item, count=1)
+        item = re.sub('1', '0', item, count=1)
         return item
 
     starting_items = ['110', '010', '000', '111', '010']
@@ -124,8 +124,6 @@ def test_genetic_algorithm_best_mutation_function_1():
 
 
 def test_genetic_algorithm_run_1():
-    from regexes import replace
-
     def scoring_func(item: str) -> int:
         return item.count('1')
 
@@ -134,7 +132,7 @@ def test_genetic_algorithm_run_1():
 
     def mutation_func(items: List[str]) -> List[str]:
         for i in items:
-            yield replace('0', '10', i, count=1)
+            yield re.sub('0', '10', i, count=1)
 
     starting_items = ['110', '010', '000', '111', '010']
 

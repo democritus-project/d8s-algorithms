@@ -1,12 +1,12 @@
 from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
-from dicts import dict_sort_by_keys, dict_sort_by_values, dict_values, dict_keys
+from democritus_dicts import dict_sort_by_keys, dict_sort_by_values, dict_values, dict_keys
 
 
 def amb(validation_function: Callable[..., bool], *args: Any) -> Iterable[Any]:
-    from maths import cartesian_product
+    import itertools
 
-    products = cartesian_product(*args)
+    products = itertools.product(*args)
     for product in products:
         if validation_function(*product):
             yield product
@@ -74,7 +74,6 @@ def genetic_algorithm_best_mutation_function(
 ):
     """Find the best mutation function which produces values from the starting values that score the highest (as measured by the scoring_function) after generations."""
     from stats import mean
-    from lists import listify
 
     results = {}
 
@@ -87,7 +86,7 @@ def genetic_algorithm_best_mutation_function(
             # todo: keep track of the score data
             values = [mutation_function(val) for val in values]
         final_scores = scores
-        average_score = mean(listify(dict_values(final_scores)))
+        average_score = mean(list(dict_values(final_scores)))
         results[mutation_function] = average_score
 
     best_mutation_function = dict_keys(dict_sort_by_values(results, reverse=True))[0]

@@ -1,0 +1,1 @@
+democritus-dicts @ git+https://github.com/democritus-project/democritus-dicts.git#egg=democritus-dicts
