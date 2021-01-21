@@ -2,8 +2,6 @@
 
 from setuptools import setup, find_packages
 
-__version__ = '2021.01.12'
-
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
@@ -15,7 +13,6 @@ with open('requirements_dev.txt') as requirements_dev_file:
 
 setup(
     name='democritus_algorithms',
-    version=__version__,
     description="Democritus functions for working with algorithms.",
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -44,5 +41,5 @@ setup(
         'Programming Language :: Python :: 3.9',
     ],
     test_suite='tests',
-    tests_require=test_requirements
+    tests_require=test_requirements,
 )
