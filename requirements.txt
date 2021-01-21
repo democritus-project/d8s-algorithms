@@ -1,2 +1,2 @@
-democritus-dicts @ git+https://github.com/democritus-project/democritus-dicts.git#egg=democritus-dicts
+democritus-dicts
 importlib-metadata; python_version < '3.8'
