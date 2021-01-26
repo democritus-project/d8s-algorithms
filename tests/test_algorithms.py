@@ -48,7 +48,7 @@ def _collect_items_2(data):
     return data.__class__.__name__
 
 
-def test_amb_1():
+def test_amb_docs_1():
     """These examples are taken from https://www.rosettacode.org/wiki/Amb#Python."""
     x = (1, 2, 3)
     y = (7, 6, 4, 5)
@@ -71,7 +71,7 @@ def test_amb_1():
     assert list(amb(is_match, l1, l2, l3, l4)) == [('that', 'thing', 'grows', 'slowly')]
 
 
-def test_depth_first_traverse_1():
+def test_depth_first_traverse_docs_1():
     assert list(depth_first_traverse(TEST_DATA_1, _get_children_1)) == [1, 2, 3, 4]
 
     result = depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2)
@@ -79,12 +79,12 @@ def test_depth_first_traverse_1():
     assert class_names == ['Expr', 'Assign', 'Expr', 'Return', 'Return', 'Assign']
 
 
-def test_depth_first_traverse_2():
+def test_depth_first_traverse_docs_2():
     # this tests a situation where the function to get children and the collect_items_function (_get_children_1) will return None when given a list
     assert list(depth_first_traverse([1, 2, 3], _get_children_1, collect_items_function=_get_children_1)) == [None]
 
 
-def test_depth_first_traverse_with_collection_function():
+def test_depth_first_traverse_with_collection_function_docs():
     result = tuple(
         depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
     )
@@ -92,18 +92,18 @@ def test_depth_first_traverse_with_collection_function():
     assert result == ('Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Expr', 'Return', 'If', 'Return', 'Assign')
 
 
-def test_breadth_first_traverse_1():
+def test_breadth_first_traverse_docs_1():
     assert list(breadth_first_traverse(TEST_DATA_1, _get_children_1)) == [2, 3, 1, 4]
 
 
-def test_breadth_first_traverse_with_collection_function():
+def test_breadth_first_traverse_with_collection_function_docs():
     result = tuple(
         breadth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
     )
     assert result == ('Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Return', 'If', 'Expr', 'Return', 'Assign')
 
 
-def test_genetic_algorithm_best_mutation_function_1():
+def test_genetic_algorithm_best_mutation_function_docs_1():
     def scoring_func(item: str) -> int:
         return item.count('1')
 
@@ -121,7 +121,7 @@ def test_genetic_algorithm_best_mutation_function_1():
     assert result == mutation_func_1
 
 
-def test_genetic_algorithm_run_1():
+def test_genetic_algorithm_run_docs_1():
     def scoring_func(item: str) -> int:
         return item.count('1')
 
