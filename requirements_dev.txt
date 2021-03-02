@@ -8,6 +8,6 @@ mypy
 pylint
 pytest
 pytest-cov
-democritus-python-data @ git+https://github.com/democritus-project/democritus-python-data.git#egg=democritus-python-data
+democritus-python
 democritus_file_system
 democritus_strings
