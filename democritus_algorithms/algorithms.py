@@ -1,6 +1,6 @@
 from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
-from democritus_dicts import dict_sort_by_keys, dict_sort_by_values, dict_values, dict_keys
+from democritus_dicts import dict_keys, dict_sort_by_keys, dict_sort_by_values, dict_values
 
 
 def amb(validation_function: Callable[..., bool], *args: Any) -> Iterable[Any]:
@@ -18,7 +18,12 @@ def depth_first_traverse(
     *,
     collect_items_function: Optional[Callable[[Any], Any]] = None
 ) -> Iterable[Any]:
-    """Traverse the data in a depth-first manner. The get_children_function specifies how children will be identified from each node of the data. The collect_items_function, if provided, allows you to collect items from the data by returning them from the collect_items_function."""
+    """Traverse the data in a depth-first manner.
+
+    The get_children_function specifies how children will be identified from each node of the data.
+    The collect_items_function, if provided, allows you to collect items from the data by...
+     returning them from the collect_items_function.
+    """
     children = get_children_function(data)
 
     if collect_items_function:
@@ -37,7 +42,12 @@ def breadth_first_traverse(
     *,
     collect_items_function: Optional[Callable[[Any], Any]] = None
 ) -> Iterable[Any]:
-    """Traverse the data in a breadth-first manner. The get_children_function specifies how children will be identified from each node of the data. The collect_items_function, if provided, allows you to collect items from the data by returning them from the collect_items_function."""
+    """Traverse the data in a breadth-first manner.
+
+    The get_children_function specifies how children will be identified from each node of the data.
+    The collect_items_function, if provided, allows you to collect items from the data by...
+     returning them from the collect_items_function.
+    """
     container = [data]
     while len(container) > 0:
         node = container.pop(0)
@@ -72,7 +82,11 @@ def genetic_algorithm_best_mutation_function(
     scoring_function: Callable[[Any], Union[int, float]],
     mutation_functions: List[Callable[[Any], Any]],
 ):
-    """Find the best mutation function which produces values from the starting values that score the highest (as measured by the scoring_function) after generations."""
+    """Find the best mutation function.
+
+    The best function is the one which produces values from the starting values...
+     that score the highest (as measured by the scoring_function) after generations.
+    """
     import statistics
 
     results = {}

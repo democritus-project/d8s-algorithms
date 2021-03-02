@@ -1,17 +1,17 @@
-from collections import OrderedDict
-import os
 import re
-from typing import List, Dict
+from collections import OrderedDict
+from typing import Dict, Iterable, List
+
+from democritus_dicts import dict_keys, dict_values
+from democritus_python import python_ast_parse
 
 from democritus_algorithms import (
     amb,
-    depth_first_traverse,
     breadth_first_traverse,
+    depth_first_traverse,
     genetic_algorithm_best_mutation_function,
     genetic_algorithm_run,
 )
-from democritus_dicts import dict_values, dict_keys
-from democritus_python_data import python_ast_parse
 
 TEST_DATA_1 = {'a': {'b': 1}, 'c': 2, 'd': 3, 'e': {'f': 4}}
 TEST_DATA_2 = '''def test():
@@ -128,7 +128,7 @@ def test_genetic_algorithm_run_docs_1():
     def selection_func(data: Dict[str, int]) -> List[str]:
         return dict_keys(data)[:3]
 
-    def mutation_func(items: List[str]) -> List[str]:
+    def mutation_func(items: List[str]) -> Iterable[str]:
         for i in items:
             yield re.sub('0', '10', i, count=1)
 
