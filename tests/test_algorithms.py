@@ -5,7 +5,7 @@ from typing import Dict, Iterable, List
 from democritus_dicts import dict_keys, dict_values
 from democritus_python import python_ast_parse
 
-from democritus_algorithms import (
+from d8s_algorithms import (
     amb,
     breadth_first_traverse,
     depth_first_traverse,
