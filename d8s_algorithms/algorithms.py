@@ -1,6 +1,6 @@
 from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
-from democritus_dicts import dict_keys, dict_sort_by_keys, dict_sort_by_values, dict_values
+from d8s_dicts import dict_keys, dict_sort_by_keys, dict_sort_by_values, dict_values
 
 
 def amb(validation_function: Callable[..., bool], *args: Any) -> Iterable[Any]:

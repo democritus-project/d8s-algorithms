@@ -1,2 +1,2 @@
-democritus-dicts
+d8s-dicts
 importlib-metadata; python_version < '3.8'

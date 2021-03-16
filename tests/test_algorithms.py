@@ -2,8 +2,8 @@ import re
 from collections import OrderedDict
 from typing import Dict, Iterable, List
 
-from democritus_dicts import dict_keys, dict_values
-from democritus_python import python_ast_parse
+from d8s_dicts import dict_keys, dict_values
+from d8s_python import python_ast_parse
 
 from d8s_algorithms import (
     amb,
