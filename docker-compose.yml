@@ -8,6 +8,7 @@ services:
       context: .
     volumes:
       - ./:/code
+      - ~/.gitconfig:/root/.gitconfig
 
   bump-patch:
     <<: *base
