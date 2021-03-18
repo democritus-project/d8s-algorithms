@@ -1,8 +1,11 @@
 # Democritus Algorithms
 
-[![PyPI](https://img.shields.io/pypi/v/d8s-algorithms.svg)](https://pypi.python.org/pypi/d8s-algorithms)
-[![Build Status](https://travis-ci.com/democritus-project/d8s-algorithms.svg?branch=main)](https://travis-ci.com/democritus-project/d8s-algorithms)
-[![codecov](https://codecov.io/gh/democritus-project/d8s-algorithms/branch/main/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/democritus-project/d8s-algorithms)
+[![PyPI](https://img.shields.io/pypi/v/d8s_algorithms.svg)](https://pypi.python.org/pypi/d8s_algorithms)
+[![CI](https://github.com/democritus-project/d8s_algorithms/workflows/CI/badge.svg)](https://github.com/democritus-project/d8s_algorithms/actions)
+[![Lint](https://github.com/democritus-project/d8s_algorithms/workflows/Lint/badge.svg)](https://github.com/democritus-project/d8s_algorithms/actions)
+[![codecov](https://codecov.io/gh/democritus-project/d8s_algorithms/branch/main/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/democritus-project/d8s_algorithms)
+[![The Democritus Project uses semver version 2.0.0](https://img.shields.io/badge/-semver%20v2.0.0-22bfda)](https://semver.org/spec/v2.0.0.html)
+[![The Democritus Project uses black to format code](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Democritus functions<sup>[1]</sup> for working with algorithms.
 
