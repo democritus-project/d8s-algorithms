@@ -1,4 +1,4 @@
-# Democritus Algorithms
+# Democritus Algorithms (a.k.a. d8s-algorithms)
 
 [![PyPI](https://img.shields.io/pypi/v/d8s-algorithms.svg)](https://pypi.python.org/pypi/d8s-algorithms)
 [![CI](https://github.com/democritus-project/d8s-algorithms/workflows/CI/badge.svg)](https://github.com/democritus-project/d8s-algorithms/actions)
@@ -11,6 +11,14 @@
 Democritus functions<sup>[1]</sup> for working with algorithms.
 
 [1] Democritus functions are <i>simple, effective, modular, well-tested, and well-documented</i> Python functions.
+
+We use `d8s` as an abbreviation for `democritus` (you can read more about this [here](https://github.com/democritus-project/roadmap#what-is-d8s)).
+
+## Installation
+
+```
+pip install d8s-algorithms
+```
 
 ## Usage
 
