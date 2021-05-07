@@ -20,6 +20,16 @@ We use `d8s` (pronounced "dee-eights") as an abbreviation for `democritus` (you 
 pip install d8s-algorithms
 ```
 
+## Usage
+
+You import the library like:
+
+```python
+from d8s_algorithms import *
+```
+
+Once imported, you can use any of the functions listed below.
+
 ## Functions
 
   - ```python
