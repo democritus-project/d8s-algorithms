@@ -16,7 +16,7 @@ def depth_first_traverse(
     data: Any,
     get_children_function: Callable[[Any], Optional[Iterable]],
     *,
-    collect_items_function: Optional[Callable[[Any], Any]] = None
+    collect_items_function: Optional[Callable[[Any], Any]] = None,
 ) -> Iterable[Any]:
     """Traverse the data in a depth-first manner.
 
@@ -40,7 +40,7 @@ def breadth_first_traverse(
     data: Any,
     get_children_function: Callable[[Any], Optional[Iterable]],
     *,
-    collect_items_function: Optional[Callable[[Any], Any]] = None
+    collect_items_function: Optional[Callable[[Any], Any]] = None,
 ) -> Iterable[Any]:
     """Traverse the data in a breadth-first manner.
 

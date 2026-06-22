@@ -1,2 +1,0 @@
-d8s-dicts==0.*
-importlib-metadata; python_version < '3.8'
