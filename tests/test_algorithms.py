@@ -13,7 +13,7 @@ from d8s_algorithms import (
     genetic_algorithm_run,
 )
 
-TEST_DATA_1 = {'a': {'b': 1}, 'c': 2, 'd': 3, 'e': {'f': 4}}
+TEST_DATA_1 = {"a": {"b": 1}, "c": 2, "d": 3, "e": {"f": 4}}
 TEST_DATA_2 = '''def test():
     """."""
     x = 10
@@ -37,9 +37,9 @@ def _get_children_1(data):
 
 def _get_children_2(data):
     children = []
-    if hasattr(data, 'body'):
+    if hasattr(data, "body"):
         children.extend(data.body)
-    if hasattr(data, 'orelse'):
+    if hasattr(data, "orelse"):
         children.extend(data.orelse)
     return children
 
@@ -68,7 +68,7 @@ def test_amb_docs_1():
     def is_match(a, b, c, d):
         return a[-1] == b[0] and b[-1] == c[0] and c[-1] == d[0]
 
-    assert list(amb(is_match, l1, l2, l3, l4)) == [('that', 'thing', 'grows', 'slowly')]
+    assert list(amb(is_match, l1, l2, l3, l4)) == [("that", "thing", "grows", "slowly")]
 
 
 def test_depth_first_traverse_docs_1():
@@ -76,7 +76,7 @@ def test_depth_first_traverse_docs_1():
 
     result = depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2)
     class_names = [i.__class__.__name__ for i in result]
-    assert class_names == ['Expr', 'Assign', 'Expr', 'Return', 'Return', 'Assign']
+    assert class_names == ["Expr", "Assign", "Expr", "Return", "Return", "Assign"]
 
 
 def test_depth_first_traverse_docs_2():
@@ -89,7 +89,7 @@ def test_depth_first_traverse_with_collection_function_docs():
         depth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
     )
 
-    assert result == ('Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Expr', 'Return', 'If', 'Return', 'Assign')
+    assert result == ("Module", "FunctionDef", "Expr", "Assign", "If", "If", "Expr", "Return", "If", "Return", "Assign")
 
 
 def test_breadth_first_traverse_docs_1():
@@ -100,22 +100,22 @@ def test_breadth_first_traverse_with_collection_function_docs():
     result = tuple(
         breadth_first_traverse(python_ast_parse(TEST_DATA_2), _get_children_2, collect_items_function=_collect_items_2)
     )
-    assert result == ('Module', 'FunctionDef', 'Expr', 'Assign', 'If', 'If', 'Return', 'If', 'Expr', 'Return', 'Assign')
+    assert result == ("Module", "FunctionDef", "Expr", "Assign", "If", "If", "Return", "If", "Expr", "Return", "Assign")
 
 
 def test_genetic_algorithm_best_mutation_function_docs_1():
     def scoring_func(item: str) -> int:
-        return item.count('1')
+        return item.count("1")
 
     def mutation_func_1(item: str) -> str:
-        item = re.sub('0', '1', item, count=1)
+        item = re.sub("0", "1", item, count=1)
         return item
 
     def mutation_func_2(item: str) -> str:
-        item = re.sub('1', '0', item, count=1)
+        item = re.sub("1", "0", item, count=1)
         return item
 
-    starting_items = ['110', '010', '000', '111', '010']
+    starting_items = ["110", "010", "000", "111", "010"]
     mutation_funcs = [mutation_func_1, mutation_func_2]
     result = genetic_algorithm_best_mutation_function(starting_items, 100, scoring_func, mutation_funcs)
     assert result == mutation_func_1
@@ -123,28 +123,28 @@ def test_genetic_algorithm_best_mutation_function_docs_1():
 
 def test_genetic_algorithm_run_docs_1():
     def scoring_func(item: str) -> int:
-        return item.count('1')
+        return item.count("1")
 
     def selection_func(data: Dict[str, int]) -> List[str]:
         return dict_keys(data)[:3]
 
     def mutation_func(items: List[str]) -> Iterable[str]:
         for i in items:
-            yield re.sub('0', '10', i, count=1)
+            yield re.sub("0", "10", i, count=1)
 
-    starting_items = ['110', '010', '000', '111', '010']
+    starting_items = ["110", "010", "000", "111", "010"]
 
     result = genetic_algorithm_run(starting_items, scoring_func, selection_func, mutation_func, 100)
     assert result == OrderedDict(
         [
             (
-                '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110',
+                "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110",
                 101,
             ),
             (
-                '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111010',
+                "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111010",
                 100,
             ),
-            ('111', 3),
+            ("111", 3),
         ]
     )
